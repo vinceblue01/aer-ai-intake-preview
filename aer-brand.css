@@ -1,0 +1,240 @@
+/* ============================================================================
+   AER brand stylesheet
+   Derived from the AER Visual Identity Guide + the official full-colour mark.
+   Primary: Blue PMS 7692, Gold PMS 7753, Green PMS 7489.
+   Typography: Segoe UI (official primary) with Open Sans web fallback.
+   Text: headings #000, body #333. Web-safe per the guide (aer.ca section).
+   ----------------------------------------------------------------------------
+   Use the tokens; don't hard-code colours. Never recolour/distort the logo.
+   ========================================================================== */
+
+:root {
+  /* Primary palette (hex from the official mark) */
+  --aer-blue:   #00497C;   /* PMS 7692 — official primary */
+  --aer-gold:   #C4A11B;   /* PMS 7753 */
+  --aer-green:  #73B564;   /* PMS 7489 */
+
+  /* Neutrals (guide: charcoal grey for outlines; web text #000 / #333) */
+  --aer-charcoal: #333F48;
+  --aer-ink:      #000000;  /* headings */
+  --aer-body:     #333333;  /* body copy */
+  --aer-grey:     #6b7681;
+  --aer-line:     #e2e6ea;
+  --aer-surface:  #ffffff;
+  --aer-canvas:   #f4f5f7;
+
+  /* Tints for fills/badges (light, accessible backgrounds) */
+  --aer-blue-tint:  #e6eef4;
+  --aer-green-tint: #ecf5e8;
+  --aer-gold-tint:  #f7f0d8;
+
+  /* Type + shape */
+  --aer-font: "Segoe UI", "Open Sans", -apple-system, BlinkMacSystemFont,
+              Roboto, Helvetica, Arial, sans-serif;
+  --aer-radius: 10px;
+  --aer-shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 16px rgba(0,73,124,.06);
+  --aer-maxw: 1120px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--aer-font);
+  color: var(--aer-body);
+  background: var(--aer-canvas);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { color: var(--aer-ink); margin: 0 0 .4em; line-height: 1.2; }
+a { color: var(--aer-blue); }
+
+/* --- Top bar: white, hosts the full-colour logo (never on dark) --- */
+.aer-topbar {
+  background: var(--aer-surface);
+  border-bottom: 3px solid var(--aer-blue);
+  padding: 14px 24px;
+}
+.aer-topbar__inner {
+  max-width: var(--aer-maxw); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.aer-topbar img { height: 44px; width: auto; display: block; }
+
+/* --- Hero band: AER blue, white text (no logo on the blue) --- */
+.aer-hero { background: var(--aer-blue); color: #fff; }
+.aer-hero__inner { max-width: var(--aer-maxw); margin: 0 auto; padding: 34px 24px; }
+.aer-hero h1 { color: #fff; font-size: 2rem; }
+.aer-hero p { color: #cfe0ee; margin: .4em 0 0; max-width: 60ch; }
+
+/* --- Layout --- */
+.aer-wrap { max-width: var(--aer-maxw); margin: 0 auto; padding: 28px 24px 56px; }
+.aer-grid { display: grid; gap: 18px; }
+.aer-grid--kpi  { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.aer-grid--cards{ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.aer-section { margin-top: 36px; }
+.aer-section > h2 {
+  font-size: 1.15rem; padding-bottom: 8px; margin-bottom: 16px;
+  border-bottom: 2px solid var(--aer-line);
+}
+
+/* --- Cards / KPI tiles --- */
+.aer-card {
+  background: var(--aer-surface); border: 1px solid var(--aer-line);
+  border-radius: var(--aer-radius); padding: 18px 20px; box-shadow: var(--aer-shadow);
+}
+.aer-kpi { border-top: 4px solid var(--aer-blue); }
+.aer-kpi .num { font-size: 2rem; font-weight: 700; color: var(--aer-blue); }
+.aer-kpi .lbl { color: var(--aer-grey); font-size: .85rem; }
+.aer-kpi--green { border-top-color: var(--aer-green); } .aer-kpi--green .num { color:#4f8a3f; }
+.aer-kpi--gold  { border-top-color: var(--aer-gold);  } .aer-kpi--gold  .num { color:#9a7e15; }
+
+/* --- Pills / badges --- */
+.aer-pill {
+  display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .02em;
+  padding: 3px 10px; border-radius: 999px; border: 1px solid transparent;
+}
+.aer-pill--blue  { background: var(--aer-blue-tint);  color: var(--aer-blue);  }
+.aer-pill--green { background: var(--aer-green-tint); color: #3f7a30; }
+.aer-pill--gold  { background: var(--aer-gold-tint);  color: #8a7012; }
+.aer-pill--grey  { background: #eef1f3; color: var(--aer-grey); }
+
+/* --- Pipeline / steps --- */
+.aer-steps { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; }
+.aer-step {
+  flex: 1 1 140px; background: var(--aer-surface); border: 1px solid var(--aer-line);
+  border-left: 4px solid var(--aer-green); border-radius: 8px; padding: 12px 14px;
+}
+.aer-step.pending { border-left-color: var(--aer-grey); opacity: .8; }
+.aer-step .k { font-size: .72rem; color: var(--aer-grey); text-transform: uppercase; letter-spacing:.04em;}
+.aer-step .t { font-weight: 600; color: var(--aer-ink); }
+
+/* --- Lists --- */
+.aer-list { margin: 0; padding: 0; list-style: none; }
+.aer-list li { padding: 8px 0; border-bottom: 1px solid var(--aer-line); }
+.aer-list li:last-child { border-bottom: 0; }
+
+/* --- Footer --- */
+.aer-footer {
+  border-top: 1px solid var(--aer-line); background: var(--aer-surface);
+  color: var(--aer-grey); font-size: .85rem;
+}
+.aer-footer__inner { max-width: var(--aer-maxw); margin: 0 auto; padding: 20px 24px; }
+
+.aer-muted { color: var(--aer-grey); }
+.aer-mono  { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+/* ============================================================================
+   Dashboard components (multi-section single-page site)
+   Reusable AER building blocks: sticky nav, gradient hero, KPI-on-dark,
+   phase cards, data table, gate cards, fleet columns, callouts, lock overlay.
+   ========================================================================== */
+
+/* Sticky nav */
+.aer-nav {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--aer-surface); border-bottom: 1px solid var(--aer-line);
+  box-shadow: 0 1px 6px rgba(0,0,0,.05);
+}
+.aer-nav__inner {
+  max-width: var(--aer-maxw); margin: 0 auto; padding: 10px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.aer-nav img { height: 38px; width: auto; display: block; }
+.aer-nav__links { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+.aer-nav__links a {
+  color: var(--aer-charcoal); text-decoration: none; font-weight: 600; font-size: .92rem;
+}
+.aer-nav__links a:hover { color: var(--aer-blue); }
+.aer-lockbtn {
+  display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+  border: 1px solid var(--aer-line); background: #fff; color: var(--aer-charcoal);
+  font-weight: 600; font-size: .85rem; padding: 6px 12px; border-radius: 8px;
+}
+
+/* Anchor offset so sticky nav doesn't cover section tops */
+section[id] { scroll-margin-top: 76px; }
+
+/* Gradient hero */
+.aer-hero--gradient { background: linear-gradient(135deg, #0a5e9c 0%, var(--aer-blue) 45%, #013354 100%); }
+.aer-hero--gradient .aer-hero__inner { padding: 56px 24px; }
+.aer-hero__grid { max-width: var(--aer-maxw); margin: 0 auto; display: grid;
+  grid-template-columns: 1.5fr 1fr; gap: 32px; align-items: center; }
+@media (max-width: 820px){ .aer-hero__grid{ grid-template-columns: 1fr; } }
+.aer-eyebrow { color: var(--aer-green); font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; font-size: .8rem; margin-bottom: 10px; }
+.aer-hero--gradient h1 { color:#fff; font-size: 2.6rem; line-height:1.1; }
+.aer-hero--gradient p { color:#cfe0ee; max-width: 60ch; }
+.aer-hero--gradient .hl { color: var(--aer-green); }
+.aer-logo-card { background:#fff; border-radius: 14px; padding: 22px 26px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18); display:inline-block; }
+.aer-logo-card img { height: 96px; width:auto; display:block; }
+
+/* KPI tiles on dark */
+.aer-kpis { max-width: var(--aer-maxw); margin: 30px auto 0; padding: 0 24px;
+  display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+.aer-kpi-dark { background: rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16);
+  border-radius: 12px; padding: 16px 18px; }
+.aer-kpi-dark .num { font-size: 1.9rem; font-weight: 700; color:#fff; }
+.aer-kpi-dark .lbl { color: var(--aer-green); font-weight:700; font-size:.74rem;
+  text-transform: uppercase; letter-spacing:.05em; margin-top:2px; }
+.aer-kpi-dark .sub { color:#a9c6df; font-size:.82rem; margin-top:4px; }
+
+/* Phase cards */
+.aer-phase { background: var(--aer-surface); border:1px solid var(--aer-line);
+  border-left: 6px solid var(--aer-grey); border-radius: 12px; padding: 18px 20px; }
+.aer-phase__top { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+.aer-phase .k { font-size:.74rem; color:var(--aer-grey); text-transform:uppercase; letter-spacing:.06em; font-weight:700; }
+.aer-phase h3 { margin:.1em 0 .4em; }
+.aer-phase p { color: var(--aer-body); font-size:.92rem; margin:0; }
+.aer-phase.is-complete { border-left-color: var(--aer-green); background: var(--aer-green-tint); }
+.aer-phase.is-current  { border-left-color: var(--aer-blue);  background: var(--aer-blue-tint); }
+.aer-phase.is-next     { border-left-color: var(--aer-gold);  background: var(--aer-gold-tint); }
+.aer-phase.is-planned  { border-left-color: var(--aer-grey); }
+
+/* Data table */
+.aer-table { width:100%; border-collapse: collapse; background: var(--aer-surface);
+  border:1px solid var(--aer-line); border-radius: 12px; overflow:hidden; }
+.aer-table thead th { background: var(--aer-blue); color:#fff; text-align:left;
+  font-size:.74rem; letter-spacing:.05em; text-transform:uppercase; padding:12px 16px; }
+.aer-table td { padding: 12px 16px; border-top:1px solid var(--aer-line); font-size:.92rem; vertical-align: top; }
+.aer-table tbody tr:nth-child(even){ background:#fafbfc; }
+.aer-chip { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size:.78rem; background:#eef1f3; color:var(--aer-charcoal); padding:2px 8px; border-radius:6px; }
+
+/* Gate / reviewer cards */
+.aer-gate { background: var(--aer-surface); border:1px solid var(--aer-line); border-radius:12px; padding:18px 20px; }
+.aer-gate .check { color: var(--aer-green); font-size:1.4rem; line-height:1; }
+.aer-gate h3 { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--aer-blue); font-size:1rem; margin:.5em 0 .3em; }
+.aer-advisory { display:inline-block; margin-top:10px; font-size:.72rem; font-weight:700;
+  letter-spacing:.04em; color:#8a7012; background:var(--aer-gold-tint); border:1px solid #e6d28a;
+  padding:3px 10px; border-radius:999px; }
+
+/* Callout */
+.aer-callout { border-radius:10px; padding:14px 18px; font-size:.92rem; }
+.aer-callout--warn { background: var(--aer-gold-tint); border:1px solid #e6d28a; color:#6f5a10; }
+
+/* Fleet / two-column flow */
+.aer-fleet { display:grid; grid-template-columns: 1fr auto 1fr; gap:18px; align-items:center; }
+@media (max-width: 760px){ .aer-fleet{ grid-template-columns:1fr; } }
+.aer-fleet__box { border-radius:12px; padding:18px 20px; }
+.aer-fleet__box.blue  { background: var(--aer-blue-tint);  border:1px solid #cfe0ee; }
+.aer-fleet__box.green { background: var(--aer-green-tint); border:1px solid #cfe6c2; }
+.aer-fleet__box h4 { margin:0 0 8px; }
+.aer-fleet__box .flow { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size:.85rem; color: var(--aer-charcoal); }
+.aer-fleet__arrow { color: var(--aer-green); font-weight:700; text-align:center; }
+
+/* Lock overlay (cosmetic preview gate — NOT real security) */
+#aer-lock { position: fixed; inset:0; z-index:100; background: rgba(0,42,74,.55);
+  backdrop-filter: blur(8px); display:flex; align-items:center; justify-content:center; }
+#aer-lock .box { background:#fff; border-radius:14px; padding:28px 30px; width:min(380px,90vw);
+  box-shadow:0 20px 60px rgba(0,0,0,.3); text-align:center; }
+#aer-lock h2 { margin:.2em 0; }
+#aer-lock input { width:100%; padding:10px 12px; border:1px solid var(--aer-line); border-radius:8px;
+  font-size:1rem; margin:12px 0; }
+#aer-lock button { background: var(--aer-blue); color:#fff; border:0; border-radius:8px;
+  padding:10px 18px; font-weight:600; cursor:pointer; width:100%; }
+#aer-lock .err { color:#b3261e; font-size:.85rem; min-height:1em; }
